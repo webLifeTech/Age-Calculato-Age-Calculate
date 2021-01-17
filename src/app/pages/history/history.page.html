@@ -1,0 +1,71 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-title>History</ion-title>
+        <ion-buttons slot="secondary">
+            <ion-button *ngIf="gs.userHitstory.length" (click)="deleteAllHistory()">
+                <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+            </ion-button>
+            <ion-button (click)="gs.appShare()">
+                <ion-icon slot="icon-only" name="share-social-outline"></ion-icon>
+            </ion-button>
+            <ion-button (click)="gs.presentPopover($event)">
+                <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="gs.userHitstory.length">
+    <ion-card class="ion-no-margin" color="secondary" style="border-radius:0 0 38px 38px;height: 150px;"></ion-card>
+    <div style="margin-top: -140px">
+        <ion-card color="light" *ngFor="let item of gs.userHitstory;let i = index">
+            <ion-item lines="full" class="ion-text-center">
+                <ion-label>
+                    <span style="float: left">{{i+1}}.</span> {{item.start_date | date}} To {{item.end_date | date}}
+                </ion-label>
+            </ion-item>
+            <ion-card-content class="ion-no-padding" color="light">
+                <ion-grid>
+                    <ion-row>
+                        <ion-col class="ion-text-center" size="4">
+                            <ion-text>Years</ion-text>
+                            <div class="custom_item">
+                                <h1 class="ion-no-margin">{{item.totleYears}}</h1>
+                            </div>
+                        </ion-col>
+                        <ion-col class="ion-text-center" size="4">
+                            <ion-text>Months</ion-text>
+                            <div class="custom_item">
+                                <h1 class="ion-no-margin">{{item.ageMonths}}</h1>
+                            </div>
+                        </ion-col>
+                        <ion-col class="ion-text-center" size="4">
+                            <ion-text>Days</ion-text>
+                            <div class="custom_item">
+                                <h1 class="ion-no-margin">{{item.ageDays}}</h1>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-card-content>
+            <ion-item lines="full" class="ion-text-center">
+                <ion-button slot="end" color="secondary" fill="clear" (click)="deleteOne(i)">
+                    <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                </ion-button>
+            </ion-item>
+        </ion-card>
+    </div>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button color="secondary" routerLink="/tabs/overview">
+            <ion-icon name="calculator-outline"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>
+<ion-content *ngIf="!gs.userHitstory.length">
+    <img src="assets/history.png" alt="">
+    <div class="ion-text-center" style="position: absolute;bottom: 0;width: 100%;padding: 20px;">
+        <ion-button routerLink="/tabs/overview" color="secondary" shape="round" expand="block" style="height: 54px;">
+            try Age Calculator
+        </ion-button>
+    </div>
+</ion-content>

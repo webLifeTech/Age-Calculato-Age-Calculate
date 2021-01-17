@@ -1,0 +1,131 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-title>Age Calculator</ion-title>
+        <ion-buttons slot="secondary">
+            <ion-button (click)="gs.appShare()">
+                <ion-icon slot="icon-only" name="share-social-outline"></ion-icon>
+            </ion-button>
+            <ion-button (click)="gs.presentPopover($event)">
+                <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+    <ion-card class="ion-no-margin" color="secondary" style="border-radius:0 0 38px 38px;height: 150px;"></ion-card>
+    <ion-card style="border-radius:12px;margin-top: -140px;">
+        <ion-card-content>
+            <ion-row class="ion-text-center">
+                <ion-col size="12">
+                    <ion-item lines="none" class="custom_input">
+                        <ion-label>Date of Birth</ion-label>
+                        <ion-datetime [(ngModel)]="gs.dayStart" displayFormat="DD/MM/YYYY" placeholder="Select Date"></ion-datetime>
+                    </ion-item>
+                </ion-col>
+                <ion-col size="12">
+                    <ion-item lines="none" class="custom_input">
+                        <ion-label>Today's Date</ion-label>
+                        <ion-datetime [(ngModel)]="gs.dayEnd" displayFormat="DD/MM/YYYY" placeholder="Select Date"></ion-datetime>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-card-content>
+        <ion-row class="ion-margin-bottom">
+            <ion-col>
+                <!-- <div (click)="gs.ageClear()" class="custom_button">
+                    <h5 class="ion-no-margin">Clear</h5>
+                </div> -->
+                <ion-button (click)="gs.ageClear()" color="secondary" shape="round" expand="block" style="height: 50px;">
+                    Clear
+                </ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button (click)="gs.ageCalculate()" color="secondary" shape="round" expand="block" style="height: 50px;">
+                    Calculate
+                </ion-button>
+                <!-- <div (click)="gs.ageCalculate()" class="custom_button">
+                    <h5 class="ion-no-margin">Calculate</h5>
+                </div> -->
+            </ion-col>
+        </ion-row>
+    </ion-card>
+    <ion-card>
+        <ion-item lines="full" color="" class="ion-text-center">
+            <ion-label color="">
+                My Age
+            </ion-label>
+        </ion-item>
+        <ion-card-content class="ion-no-padding">
+            <ion-grid>
+                <ion-row>
+                    <ion-col class="ion-text-center" size="4">
+                        <ion-text>Years</ion-text>
+                        <div class="custom_item item3">
+                            <h1 class="ion-no-margin">{{gs.totleYears}}</h1>
+                        </div>
+                    </ion-col>
+                    <ion-col class="ion-text-center" size="4">
+                        <ion-text>Months</ion-text>
+                        <div class="custom_item item6">
+                            <h1 class="ion-no-margin">{{gs.ageMonths}}</h1>
+                        </div>
+                    </ion-col>
+                    <ion-col class="ion-text-center" size="4">
+                        <ion-text>Days</ion-text>
+                        <div class="custom_item item3">
+                            <h1 class="ion-no-margin">{{gs.ageDays}}</h1>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+    <ion-card style="margin-bottom: 70px!important;">
+        <ion-item lines="full" color="" class="ion-text-center">
+            <ion-label color="">
+                <ion-icon name="accessibility-outline" style="padding-right: 6px;"></ion-icon>
+                About Age
+                <ion-icon name="accessibility-outline" style="padding-left: 6px;"></ion-icon>
+            </ion-label>
+        </ion-item>
+        <ion-card-content class="ion-no-padding">
+            <ion-grid>
+                <ion-item lines="full">
+                    <ion-label>Total Years</ion-label>
+                    <ion-label color="primary">: <b>{{gs.totleYears}}</b></ion-label>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label>Total Months</ion-label>
+                    <ion-label color="primary">: <b>{{gs.totalMonths}}</b></ion-label>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label>Total Weeks</ion-label>
+                    <ion-label color="primary">: <b>{{gs.totleWeeks}}</b></ion-label>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label>Total Days</ion-label>
+                    <ion-label color="primary">: <b>{{gs.totleDays}}</b></ion-label>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label>Total Hours</ion-label>
+                    <ion-label color="primary">: <b>{{gs.totleHours}}</b></ion-label>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label>Total Minutes</ion-label>
+                    <ion-label color="primary">: <b>{{gs.totleMinutes}}</b></ion-label>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label>Total Seconds</ion-label>
+                    <ion-label color="primary">: <b>{{gs.totleSeconds}}</b></ion-label>
+                </ion-item>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button color="secondary" (click)="gs.saveDateModal('')">
+            <ion-icon name="person-add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>

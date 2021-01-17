@@ -1,0 +1,63 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="gs.dismissModal()">
+                <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="secondary">
+            <ion-button (click)="gs.appShare()">
+                <ion-icon slot="icon-only" name="share-social-outline"></ion-icon>
+            </ion-button>
+            <ion-button (click)="gs.presentPopover($event)">
+                <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Add My Date</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+    <ion-card class="ion-no-margin" color="secondary" style="border-radius:0 0 38px 38px;height: 150px;"></ion-card>
+    <ion-card style="border-radius:12px;margin-top: -140px;">
+        <form Form="saveMyDatesForm" #saveMyDatesForm="ngForm">
+            <ion-card-content>
+                <ion-row class="ion-text-center">
+                    <ion-col size="12">
+                        <ion-item lines="none" class="custom_input">
+                            <ion-label>Choose Date</ion-label>
+                            <ion-datetime [(ngModel)]="sevedDate" name="sevedDate" required displayFormat="DD/MM/YYYY" placeholder="Select Date"></ion-datetime>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col size="12">
+                        <ion-item lines="none" class="custom_input">
+                            <ion-input [(ngModel)]="userName" name="userName" required placeholder="Name"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col size="12">
+                        <ion-item>
+                            <ion-label>For</ion-label>
+                            <ion-select [(ngModel)]="selectFor" name="selectFor" required placeholder="Select One">
+                                <ion-select-option value="Birthday">Birthday</ion-select-option>
+                                <ion-select-option value="Anniversary">Anniversary</ion-select-option>
+                                <ion-select-option value="Engagement">Engagement</ion-select-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+            </ion-card-content>
+            <ion-row class="ion-margin-bottom">
+                <ion-col size="8" style="margin: auto;">
+                    <ion-button (click)="saveMyDate(saveMyDatesForm)" color="secondary" shape="round" expand="block" style="height: 50px;">
+                        Save My Date
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </form>
+    </ion-card>
+    <div class="ion-text-center" style="position: absolute;bottom: 0;width: 100%;padding: 20px;">
+        <ion-button (click)="viewMyDate()" color="secondary" shape="round" expand="block" style="height: 54px;">
+            View My Save Dates
+        </ion-button>
+    </div>
+</ion-content>

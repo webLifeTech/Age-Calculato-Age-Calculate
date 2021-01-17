@@ -1,0 +1,53 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-title>My Dates</ion-title>
+        <ion-buttons slot="secondary">
+            <ion-button (click)="gs.appShare()">
+                <ion-icon slot="icon-only" name="share-social-outline"></ion-icon>
+            </ion-button>
+            <ion-button (click)="gs.presentPopover($event)">
+                <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="light" *ngIf="gs.allMyDate.length">
+    <ion-card class="ion-no-margin" color="secondary" style="border-radius:0 0 38px 38px;height: 150px;"></ion-card>
+    <div style="margin-top: -140px">
+
+        <ion-card style="border-radius:12px;" *ngFor="let item of gs.allMyDate;let i = index">
+            <ion-item (click)="presentActionSheet(item,i)" lines="none" button>
+                <ion-avatar slot="start">
+                    <img src="assets/avatar.svg">
+                </ion-avatar>
+                <ion-label>
+                    <h2 style="font-size: 18px;">{{item.userName}}</h2>
+                    <h2>{{item.selectFor}}</h2>
+                    <p>{{item.sevedDate | date : 'dd/MM/y'}}</p>
+                </ion-label>
+                <ion-button fill="clear" color="secondary" slot="end">
+                    <ion-icon name="ellipsis-horizontal-circle-outline" slot="icon-only"></ion-icon>
+                </ion-button>
+            </ion-item>
+        </ion-card>
+    </div>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button color="secondary" (click)="gs.saveDateModal('')">
+            <ion-icon name="person-add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>
+<ion-content *ngIf="!gs.allMyDate.length">
+    <img src="assets/history.png" alt="">
+    <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button color="secondary" (click)="gs.saveDateModal('')">
+            <ion-icon name="person-add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab> -->
+    <div class="ion-text-center" style="position: absolute;bottom: 0;width: 100%;padding: 20px;">
+        <ion-button (click)="gs.saveDateModal('')" color="secondary" shape="round" expand="block" style="height: 54px;">
+            <ion-icon name="person-add" slot="start"></ion-icon> Add My Date
+        </ion-button>
+    </div>
+</ion-content>

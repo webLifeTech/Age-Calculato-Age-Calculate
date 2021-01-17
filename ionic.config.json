@@ -1,0 +1,7 @@
+{
+  "name": "khata_book",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
