@@ -21,6 +21,7 @@ export class FamousPage implements OnInit {
     const actionSheet = await this.actionSheet.create({
       header: 'Saved For ' + data.userName,
       cssClass: 'my-custom-class',
+      mode:"ios",
       buttons: [
         {
           cssClass: 'custom_color',

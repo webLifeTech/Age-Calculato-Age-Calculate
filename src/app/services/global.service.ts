@@ -68,12 +68,13 @@ export class GlobalService {
   }
 
   ageCalculate(){
+    this.admobS.showRewardVideo();
     this.totleDays = '';
     this.totalMonths = '';
     this.totleYears = '';
-
     this.totleYears = moment(this.dayEnd).diff(this.dayStart, 'years');
     this.totalMonths = moment(this.dayEnd).diff(this.dayStart, 'months');
+    this.totleDays = moment(this.dayEnd).diff(this.dayStart, 'days');
     this.totleDays = moment(this.dayEnd).diff(this.dayStart, 'days');
     this.totleWeeks = Math.round((this.totleDays / 7));
     this.totleHours = Math.round((this.totleDays * 24));
@@ -85,12 +86,25 @@ export class GlobalService {
   diff_year_month_day() {
     var age = moment.duration(moment(this.dayEnd).diff(this.dayStart));
     console.log("age>>>>",age);
-    
+    // var result = this.daysUntil(this.dayStart);
+    var result = moment(this.dayEnd).diff(this.dayStart);
+      console.log("result>>>>>>",result);
+      console.log("Date>>>>>>",new Date(result));
+      // console.log("result>>>>>>",result.months());
     // var ffffffffff = moment.duration(moment(this.dayStart).diff(this.dayEnd));
     
     var yearsBetween = age.years();
     var monthsBetween = age.months();
     var daysBetween = age.days();
+    // console.log("yearsBetween>>>",moment().add(1, 'years'));
+    // console.log("wwwwwwww>>>",moment('02/28/2018', "MM/DD/YYYY").add(1, 'M').endOf("month"));
+
+    // var currentDate = moment().format('DD-MM-YYYY');
+// var futureMonth = moment().add(1, 'years').format('DD-MM-YYYY');
+// console.log("currentDate>>>",currentDate);
+// console.log("futureMonth>>>",futureMonth);
+
+    
     this.ageYears = yearsBetween;
     this.ageMonths = monthsBetween;
     this.ageDays = daysBetween;
@@ -114,8 +128,7 @@ export class GlobalService {
       this.presentToast('Your Celculation is ready.');
       this.agePopup(this.ageYears)
       this.userHitstory.push(body);
-      // var result = this.daysUntil(this.dayStart);
-      // console.log("result>>>>>>",result);
+      
       localStorage.setItem('userData', JSON.stringify(this.userHitstory))
     }
   }
@@ -138,31 +151,30 @@ export class GlobalService {
     
   }
 
-  // daysUntil(date) {
-  //   var birthday = moment(date);
-  //   var today = moment().format("YYYY-MM-DD");
-  //   var age = moment(today).diff(birthday, 'years');
-  //   moment(age).format("YYYY-MM-DD");
-  //   console.log('person age', age);
-
-  //   var nextBirthday = moment(birthday).add(age, 'years');
-  //   moment(nextBirthday).format("YYYY-MM-DD");
-  //   if (nextBirthday.isSame(today)) {
-  //     return 'Cake!!';
-  //   } else {
-  //     nextBirthday = moment(birthday).add(age + 1, 'years');
-  //     console.log("nextBirthday>>>>", nextBirthday.days());
+  daysUntil(date) {
+    var birthday = moment(date);
+    var today = moment().format("YYYY-MM-DD");
+    var age = moment(today).diff(birthday, 'years');
+    moment(age).format("YYYY-MM-DD");
+    
+    var nextBirthday = moment(birthday).add(age, 'years');
+    console.log('persnextBirthday', nextBirthday);
+    moment(nextBirthday).format("YYYY-MM-DD");
+    if (nextBirthday.isSame(today)) {
+      return 'Cake!!';
+    } else {
+      nextBirthday = moment(birthday).add(age + 1, 'years');
+      console.log("nextBirthday>>>>", nextBirthday.days());
       
-  //     return 'Days until next birthday' + ' ' + nextBirthday.diff(today, 'month') + ' '
-  //       + nextBirthday.diff(today, 'weeks') + ' ' +nextBirthday.days();
+      return 'Days until next birthday' + ' ' + nextBirthday.diff(today, 'year') + ' '
+        + nextBirthday.diff(today, 'month') + ' ' +nextBirthday.diff(today, 'day');
        
-  //   }
-  // }
+    }
+  }
 
 
 
   appShare(){
-    
     this.socialSharing.share(
       'Age Calculator - My Age Calculate Downlaod, Share and Give 5 Stare Review Thank you :',
       'Thank you',
@@ -187,11 +199,12 @@ export class GlobalService {
     });
     toast.present();
   }
+
   async agePopup(ageyears) {
     const alert = await this.alertC.create({
       header: 'Congratulations!',
-      cssClass: 'myalert',
-      subHeader: 'My Age is '+ ageyears +' Year',
+      mode:"ios",
+      message: 'My Age is '+ ageyears +' Year',
       buttons: [
         {
           text: 'View More',

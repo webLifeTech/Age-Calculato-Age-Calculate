@@ -48,6 +48,7 @@ export class AppComponent {
       this.statusBar.backgroundColorByHexString('#0d2c6c');
       this.splashScreen.hide();
       this.admobS.adMobFreeBanner();
+      this.admobS.showInterstitialAds();
       // let updateURL = new URL("https://play.google.com/store/apps/details?id=com.lifetechs.agecalculator");
     });
   }

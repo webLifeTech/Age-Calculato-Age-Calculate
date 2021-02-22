@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AdMobFree, AdMobFreeBannerConfig, AdMobFreeInterstitialConfig } from '@ionic-native/admob-free/ngx';
+import { AdMobFree, AdMobFreeBannerConfig, AdMobFreeInterstitialConfig, AdMobFreeRewardVideoConfig } from '@ionic-native/admob-free/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class AdmobfreeService {
   adMobFreeBanner(){
     const bannerConfig: AdMobFreeBannerConfig = {
       id: 'ca-app-pub-8376945539001469/1400552284',
-      isTesting: false,
+      isTesting: true,
       autoShow: true
     };
     this.admobFree.banner.config(bannerConfig);
@@ -23,13 +23,27 @@ export class AdmobfreeService {
   showInterstitialAds() {
     const interstitialConfig: AdMobFreeInterstitialConfig = {
       id: 'ca-app-pub-8376945539001469/5702759372',
-      isTesting: false,
+      isTesting: true,
       autoShow: true
     };
     this.admobFree.interstitial.config(interstitialConfig);
     this.admobFree.interstitial.prepare().then((res) => {
       console.log("interstitialConfig>>>>>>>>>>>>>>", res);
         this.admobFree.interstitial.show()
+      })
+      .catch(e => console.log(e));
+  }  
+
+  showRewardVideo() {
+    const rewardVideoConfig: AdMobFreeRewardVideoConfig = {
+      id: 'ca-app-pub-8376945539001469/9877808108',
+      isTesting: true,
+      autoShow: true
+    };
+    this.admobFree.rewardVideo.config(rewardVideoConfig);
+    this.admobFree.rewardVideo.prepare().then((res) => {
+      console.log("rewardVideoConfig>>>>>>>>>>>>>>", res);
+        this.admobFree.rewardVideo.show()
       })
       .catch(e => console.log(e));
   }  
