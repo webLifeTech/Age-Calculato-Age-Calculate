@@ -68,7 +68,7 @@ export class GlobalService {
   }
 
   ageCalculate(){
-    this.admobS.showRewardVideo();
+    this.admobS.rendomAdShow();
     this.totleDays = '';
     this.totalMonths = '';
     this.totleYears = '';
@@ -134,7 +134,7 @@ export class GlobalService {
   }
 
   ageClear(){
-    this.admobS.showInterstitialAds();
+    this.admobS.rendomAdShow();
     this.dayStart = new Date('01/01/2001').toISOString();
     this.dayEnd = new Date().toISOString();
     this.totleYears = '00';

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.lifetechs.agecalculator" version="0.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.lifetechs.agecalculator" version="0.0.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Age Calculator</name>
-    <description>Age Calculator,Age Calculator - My Age Calculate,Age Calculator by Date of Birth,Date of Birth,Calculator,age calculator,Age,age, my ageThis free age calculator computes age in terms of years, months, weeks, days, hours, minutes, and seconds, given a date of birth. Determine the time between today and your next birthday using the date calculator, or explore hundreds of other calculators addressing math, health, fitness, finance, and more</description>
+    <description>age calculator,calculator,age calculator - my age calculate,age calculator by date of birth,date of birth,calculator,age calculator,age,age, my agethis free age calculator computes age in terms of years, months, weeks, days, hours, minutes, and seconds, given a date of birth. determine the time between today and your next birthday using the date calculator, or explore hundreds of other calculators addressing math, health, fitness, finance, and more</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
     <access origin="*" />

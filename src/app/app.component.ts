@@ -31,9 +31,6 @@ export class AppComponent {
       if (this.routerOutlet && this.routerOutlet.canGoBack()) {
         this.routerOutlet.pop();
       } else if (this.router.url) {
-        // this.platform.exitApp();
-
-        // or if that doesn't work, try
         navigator['app'].exitApp();
       } else {
         // this.generic.showAlert("Exit", "Do you want to exit the app?", this.onYesHandler, this.onNoHandler, "backPress");
@@ -49,7 +46,6 @@ export class AppComponent {
       this.splashScreen.hide();
       this.admobS.adMobFreeBanner();
       this.admobS.showInterstitialAds();
-      // let updateURL = new URL("https://play.google.com/store/apps/details?id=com.lifetechs.agecalculator");
     });
   }
 }

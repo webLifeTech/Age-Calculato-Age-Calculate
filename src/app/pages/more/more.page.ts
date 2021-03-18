@@ -19,12 +19,12 @@ export class MorePage implements OnInit {
   }
   
   goInCalculator(){
-    this.admobS.showInterstitialAds();
+    this.admobS.rendomAdShow();
     this.router.navigate(['/tabs/overview'])
   }
 
   goInHistory(){
-    this.admobS.showInterstitialAds();
+    this.admobS.rendomAdShow();
     this.router.navigate(['/tabs/history'])
   }
 

@@ -28,16 +28,16 @@ export class HistoryPage implements OnInit {
           role: 'cancel',
           cssClass: 'alert_button',
           handler: (blah) => {
-            this.admobS.showInterstitialAds();
+            this.admobS.rendomAdShow();
             console.log('Confirm Cancel: blah');
           }
         }, {
           text: 'Delete',
           cssClass: 'alert_button',
           handler: () => {
-            this.admobS.showInterstitialAds();
+            this.admobS.showRewardVideo();
             this.gs.userHitstory = [];
-            localStorage.clear();
+            localStorage.removeItem('userData');
             this.gs.presentToast('This data deleted successfully!');
             console.log('Confirm Okay');
           }
@@ -59,7 +59,6 @@ export class HistoryPage implements OnInit {
           role: 'cancel',
           cssClass: 'alert_button',
           handler: (blah) => {
-            this.admobS.showInterstitialAds();
             console.log('Confirm Cancel: blah');
           }
         }, {
@@ -68,6 +67,7 @@ export class HistoryPage implements OnInit {
           handler: () => {
             for (let ui in this.gs.userHitstory){
               if (ui == i){
+                this.admobS.rendomAdShow();
                 this.gs.userHitstory.splice(ui, 1);
                 this.gs.presentToast('This data deleted successfully!');
                 localStorage.setItem('userData', JSON.stringify(this.gs.userHitstory))

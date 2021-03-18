@@ -47,7 +47,7 @@ export class SaveDatePage implements OnInit {
         }
         this.gs.presentToast('Your Date Updates Successfully !');
         localStorage.setItem('myDate', JSON.stringify(this.gs.allMyDate));
-        this.admobS.showInterstitialAds();
+        this.admobS.rendomAdShow();
         this.gs.dismissModal();
       }else{
         this.userId++
@@ -66,7 +66,7 @@ export class SaveDatePage implements OnInit {
     }
   }
   viewMyDate(){
-    this.admobS.showInterstitialAds();
+    this.admobS.rendomAdShow();
     this.router.navigate(['/tabs/famous'])
     this.gs.dismissModal();
   }

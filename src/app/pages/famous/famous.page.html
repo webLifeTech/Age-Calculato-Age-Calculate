@@ -2,6 +2,9 @@
     <ion-toolbar>
         <ion-title>My Dates</ion-title>
         <ion-buttons slot="secondary">
+            <ion-button *ngIf="gs.allMyDate.length" (click)="deleteAllDates()">
+                <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+            </ion-button>
             <ion-button (click)="gs.appShare()">
                 <ion-icon slot="icon-only" name="share-social-outline"></ion-icon>
             </ion-button>
